@@ -80,70 +80,13 @@ void printState() {
 void mouseReleased() {
   for (int i = 0; i < numButtons.length; i++) {
     if (numButtons[i].hover == true) {
-      String digit = str(numButtons[i].val);
-
-      if (newEntry || displayVal.equals("0.0")) {
-        displayVal = digit;
-        newEntry = false;
-      } else {
-        displayVal += digit;
-      }
-      if (left) {
-        l = float(displayVal);
-      } else {
-        r = float(displayVal);
-      }
+    handleEvent(numButtons[i].val,true);
     }
   }
 
   for (int i = 0; i < opButtons.length; i++) {
     if (opButtons[i].hover == true) {
-      char clicked = opButtons[i].val;
-
-      if (clicked == '=') {
-        performCal();
-      } else if (clicked == '+' || clicked == '-' || clicked == 'x' || clicked == '÷') {
-        op = clicked;
-        left = false;
-        newEntry = true;
-        displayVal += str(op);
-      } else if (clicked == '±') {
-        toggleSign();
-      } else if (clicked == 'C') {
-        displayVal = "0.0";
-        l = 0.0;
-        r = 0.0;
-        result = 0.0;
-        op = '0';
-        left = true;
-        newEntry = true;
-      } else if (clicked == 'q') {
-        if (left == true) {
-          l = sqrt(l);
-          displayVal = str(l);
-        } else {
-          r = sqrt(r);
-          displayVal = str(r);
-        }
-      } else if (clicked == 's') {
-        if (left == true) {
-          l = sq(l);
-          displayVal = str(l);
-        } else {
-          r = sq(r);
-          displayVal = str(r);
-        }
-      } else if (clicked == '.') {
-        if (!displayVal.contains(".")) {
-          if (left == true) {
-            displayVal += ".";
-            l = float(displayVal);
-          } else {
-            displayVal += ".";
-            r = float(displayVal);
-          }
-        }
-      }
+    handleEvent(opButtons[i].val,false);
     }
   }
   printState();
@@ -248,6 +191,51 @@ void handleEvent(char val, boolean isNum) {
       r = float(displayVal);
     }
   } else {
+     char clicked = opButtons[i].val;
 
+      if (clicked == '=') {
+        performCal();
+      } else if (clicked == '+' || clicked == '-' || clicked == 'x' || clicked == '÷') {
+        op = clicked;
+        left = false;
+        newEntry = true;
+        displayVal += str(op);
+      } else if (clicked == '±') {
+        toggleSign();
+      } else if (clicked == 'C') {
+        displayVal = "0.0";
+        l = 0.0;
+        r = 0.0;
+        result = 0.0;
+        op = '0';
+        left = true;
+        newEntry = true;
+      } else if (clicked == 'q') {
+        if (left == true) {
+          l = sqrt(l);
+          displayVal = str(l);
+        } else {
+          r = sqrt(r);
+          displayVal = str(r);
+        }
+      } else if (clicked == 's') {
+        if (left == true) {
+          l = sq(l);
+          displayVal = str(l);
+        } else {
+          r = sq(r);
+          displayVal = str(r);
+        }
+      } else if (clicked == '.') {
+        if (!displayVal.contains(".")) {
+          if (left == true) {
+            displayVal += ".";
+            l = float(displayVal);
+          } else {
+            displayVal += ".";
+            r = float(displayVal);
+          }
+        }
+      }
   }
 }

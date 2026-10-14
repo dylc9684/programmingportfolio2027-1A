@@ -26,8 +26,8 @@ Keyboard:
 - Keyboard inputs are currently not yet implemented.
 
 ## Project Files
-- `Calculator` (Main sketch)
-- `buttons.pde` (Button class and drawing logic)
+[View Source Code](./src/calculator..pde)
+
 
 ## Testing
 - **Action:** Clicked the '5' button and the '+' button.

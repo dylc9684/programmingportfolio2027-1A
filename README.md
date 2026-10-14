@@ -28,7 +28,7 @@ Keyboard:
 - Keyboard inputs are currently not yet implemented.
 
 ## Project Files
-[View Source Code](src/Calculator..zip)
+[View Source Code](src/Calculator)
 
 
 ## Testing
